@@ -1,7 +1,98 @@
 /* apply a natural box layout model to all elements, but allowing components to change */
 html {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
+
 *, *:before, *:after {
-  box-sizing: inherit;
+    box-sizing: inherit;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background: url('http://www.clipartbest.com/cliparts/ncX/LRj/ncXLRjBcB.png') no-repeat;
+    background-size: 10%;
+    background-color: #fff;
+    background-position: 75% 80%;
+}
+
+.clearfix:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.container {
+    width: 35%;
+    margin: 3em auto;
+    padding: .7em .7em;
+    text-align: center;
+    border: solid 1px lightgrey;
+    border-radius: 5px;
+}
+
+.title {
+    font-size: 3em;
+}
+
+.question {
+    margin: 1.5em 0;
+}
+
+.question h3 {
+    font-size: 1.4em;
+}
+
+.choices {
+    float: left;
+    text-align: left;
+    width: 50%;
+}
+
+.choices li {
+    margin-bottom: .5em;
+}
+
+.btn {
+    margin-top: 1em;
+    padding: 1em 1.5em;
+    border: none;
+    background-color: #4183D7;
+    color: #fff;
+}
+
+.side-bar {
+    float: right;
+    width: 50%;
+}
+
+.side-bar p {
+    font-weight: 700;
+}
+
+.feedback {
+
+}
+
+.progress {
+    margin: .7em 0;
+    height: 2em;
+}
+
+.progress-status {
+    margin-bottom: 1em;
+    font-weight: 700;
+}
+
+.progress-bar {
+    height: 1em;
+    width: 20%;
+    background-color: #3FC380;
+}
+
+/*=======================*/
+/*        Debugging      */
+/*=======================*/
+
+.container {
+    /*background-color: lightgrey;*/
 }
