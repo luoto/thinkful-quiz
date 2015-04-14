@@ -36,9 +36,17 @@ $('document').ready(function () {
     loadChoices(question1);
 
     $('.btn').click(function() {
+        // clears feedback if any
+        $('.feedback').text('');
 
         // get answer
         userAnswer = $('input[name=answer]:checked').parent().text();
+
+        // if no answer prompt user
+        if(userAnswer == '') {
+            $('.feedback').text('Please select an answer');
+            return;
+        }
 
         // check answer
         if(checkAnswer(userAnswer, questionArr[currentQuestion])) {
@@ -49,10 +57,18 @@ $('document').ready(function () {
             updateCount();
         }
 
-        if(currentQuestion >= questionArr.length - 1) {
-            // disable button
+        // prevent button from being clicked after the last question
+        // display button to reload page
+        if(currentQuestion == questionArr.length - 1) {
             $('.btn').prop('disabled', true);
             console.log('disabled button');
+            
+            $('.feedback').append('<button class="btn btn-again">Try again</button>');
+            $('.btn-again').click(function() {
+                location.reload();
+            });
+
+            return;
         }
 
         // update progress bar
@@ -60,13 +76,14 @@ $('document').ready(function () {
 
         // load next question set
         currentQuestion++;
-        loadQuestion(questionArr[currentQuestion]);
-        loadChoices(questionArr[currentQuestion]);
 
+        // change text of button to done if it is the last question
         if(currentQuestion == questionArr.length - 1) {
-            // change text of button
             $('.btn').text('Done');
         }
+
+        loadQuestion(questionArr[currentQuestion]);
+        loadChoices(questionArr[currentQuestion]);
 
     });
 
@@ -100,18 +117,24 @@ function checkAnswer(userAnswer, question) {
 
 function updateScore() {
     var currentScore = parseInt($('.cScore').text());
-    currentScore++;
+    currentScore++;    
+
+    if(currentQuestion == 5) {
+        return;
+    }
+
     $('.cScore').text(currentScore);
 };
 
 function updateCount() {
     var count = parseInt($('.count').text());
     count++;
+
+    if(currentQuestion == 4) {
+        return;
+    }
+
     $('.count').text(count);
-};
-
-function displayFeedback() {
-
 };
 
 function updateProgressBar() {
@@ -127,12 +150,4 @@ function updateProgressBar() {
     }
 
     
-};
-
-function getAnswer() {
-
-};
-
-function resetQuiz() {
-
 };
