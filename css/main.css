@@ -60,6 +60,11 @@ body {
     color: #fff;
 }
 
+.btn-again {
+    margin-top: 2em;
+    background-color: #3FC380;
+}
+
 .side-bar {
     float: right;
     width: 50%;
